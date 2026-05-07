@@ -1,0 +1,22 @@
+<div class="contactsApp">
+  @if (isLoading()) {
+    <div class="stateMessage">Loading contacts...</div>
+  } @else if (errorMessage()) {
+    <div class="stateMessage error">
+      {{ errorMessage() }}
+    </div>
+  } @else {
+    <app-contact-list
+      [contacts]="contacts()"
+      [selectedContactId]="selectedContact()?.id"
+      [isCollapsed]="isCollapsed()"
+      (selectedContactChange)="selectContact($event)"
+      (collapsedChange)="toggleCollapsed($event)">
+    </app-contact-list>
+
+    <app-contact-detail
+      [contact]="selectedContact()"
+      (back)="showList()">
+    </app-contact-detail>
+  }
+</div>

@@ -1,12 +1,31 @@
-export interface Contact {
-  id: number;
+
+export interface Phone {
+  number: string;
+  isPrimary?: boolean;
+  hasNotification?: boolean;
+}
+
+export interface ContactApi {
+  id: string;
+  firstName: string;
+  lastName: string;
   name: string;
   role: string;
   avatar: string;
-  status?: 'online' | 'away';
+  status?: 'online' | 'away' | string;
   bio: string;
-  emails: { address: string; isPrimary?: boolean }[];
   dial: string;
   meeting: string;
-  phones: { number: string; isPrimary?: boolean; hasNotification?: boolean }[];
+  phones: Phone[];
+}
+
+export interface EmailAddressApi {
+  id: string;
+  contactId: string;
+  address: string;
+  isPrimary?: boolean;
+}
+
+export interface Contact extends ContactApi {
+  emails: EmailAddressApi[];
 }

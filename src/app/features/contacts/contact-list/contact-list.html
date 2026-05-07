@@ -1,0 +1,83 @@
+<div class="contactListWrapper" [class.collapsed]="isCollapsed">
+  <div class="header">
+    <div class="headerLeft">
+      <button class="menuButton" type="button" (click)="toggleCollapse()" aria-label="Toggle contact list">
+        ☰
+      </button>
+
+      <h1 class="title">Contacts</h1>
+    </div>
+
+    @if (totalPages() > 1) {
+      <div class="navButtons">
+        <button type="button" (click)="prevPage()" [disabled]="currentPage() === 0" aria-label="Previous page">
+          ‹
+        </button>
+
+        <button type="button" (click)="nextPage()" [disabled]="currentPage() === totalPages() - 1" aria-label="Next page">
+          ›
+        </button>
+      </div>
+    }
+  </div>
+
+  <div class="searchSection">
+    <div class="searchLabel">Search for a contact</div>
+
+    <div class="searchInputWrapper">
+      <input
+        type="text"
+        placeholder="Name, email or phone number"
+        [value]="searchQuery()"
+        (input)="onSearchChange($any($event.target).value)"
+      />
+
+      <span class="searchIcon">⌕</span>
+    </div>
+  </div>
+
+  <div class="contactsScroll">
+    @if (paginatedContacts().length === 0) {
+      <div class="noResults">No contacts found</div>
+    } @else {
+      @for (contact of paginatedContacts(); track contact.id) {
+        <div
+          class="contactItem"
+          [class.selected]="selectedContactId === contact.id"
+          (click)="selectContact(contact.id)">
+
+          <div class="avatarWrapper">
+            <img [src]="contact.avatar" [alt]="contact.name" />
+
+            @if (contact.status) {
+              <div
+                class="statusDot"
+                [class.online]="contact.status === 'online'"
+                [class.away]="contact.status === 'away'">
+              </div>
+            }
+          </div>
+
+          <div class="contactInfo">
+            <div class="contactName">{{ contact.name }}</div>
+            <div class="contactRole">{{ contact.role }}</div>
+          </div>
+
+          <div class="actionButtons">
+            <button type="button" [class.active]="selectedContactId === contact.id" aria-label="Message contact">
+              ✉
+            </button>
+
+            <button type="button" [class.active]="selectedContactId === contact.id" aria-label="Call contact">
+              ☎
+            </button>
+
+            <button type="button" [class.active]="selectedContactId === contact.id" aria-label="More actions">
+              ⋯
+            </button>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>

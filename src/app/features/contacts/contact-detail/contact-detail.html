@@ -1,0 +1,151 @@
+@if (contact) {
+  <div class="detailWrapper">
+    <button class="mobileBackButton" type="button" (click)="back.emit()" aria-label="Back to contacts">
+      ←
+    </button>
+
+    <div class="detailContent">
+      <div class="headerSection">
+        <img
+          [src]="contact.avatar"
+          [alt]="contact.name"
+          class="profileImage"
+        />
+
+        <div class="profileInfo">
+          <h2 class="profileName">{{ contact.name }}</h2>
+          <p class="profileRole">{{ contact.role }}</p>
+
+          <div class="profileActions">
+            <button class="messageButton" type="button">
+              <span>✉</span>
+              <span>Message</span>
+            </button>
+
+            <button class="iconButton" type="button" aria-label="Call contact">
+              ☎
+            </button>
+
+            <button class="iconButton" type="button" aria-label="Start video meeting">
+              ▣
+            </button>
+
+            <button class="iconButton" type="button" aria-label="More options">
+              ⋯
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="infoSection">
+        <div class="sectionLabel">Bio</div>
+        <p class="sectionContent">{{ contact.bio }}</p>
+      </div>
+
+      <div class="infoSection">
+        <div class="sectionLabel">Email</div>
+
+        <div class="emailList">
+          @for (email of contact.emails; track email.id) {
+            <div class="emailItem">
+              <span class="itemText">{{ email.address }}</span>
+
+              @if (email.isPrimary) {
+                <span class="primaryBadge">Primary</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="infoSection">
+        <div class="sectionLabel">Dial</div>
+        <div class="sectionContent">{{ contact.dial }}</div>
+      </div>
+
+      <div class="infoSection">
+        <div class="sectionLabel">Meeting</div>
+
+        <a
+          class="sectionContent meetingLink"
+          [href]="contact.meeting"
+          target="_blank"
+          rel="noopener">
+          {{ contact.meeting }}
+        </a>
+      </div>
+
+      <div class="infoSection">
+        <div class="sectionLabel">Phone</div>
+
+        <div class="phoneList">
+          @for (phone of contact.phones; track phone.number) {
+            <div class="phoneItem">
+              <div class="itemLeft">
+                <span class="itemText">{{ phone.number }}</span>
+
+                @if (phone.hasNotification) {
+                  <div class="notificationDot"></div>
+                }
+              </div>
+
+              @if (phone.isPrimary) {
+                <span class="primaryBadge">Primary</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="infoSection">
+        <div class="sectionLabel">Social</div>
+
+        <div class="socialIcons">
+          <button
+            type="button"
+            [style.color]="getSocialColor('facebook')"
+            (mouseenter)="setHoveredSocial('facebook')"
+            (mouseleave)="setHoveredSocial(null)">
+            f
+          </button>
+
+          <button
+            type="button"
+            [style.color]="getSocialColor('pinterest')"
+            (mouseenter)="setHoveredSocial('pinterest')"
+            (mouseleave)="setHoveredSocial(null)">
+            p
+          </button>
+
+          <button
+            type="button"
+            [style.color]="getSocialColor('twitter')"
+            (mouseenter)="setHoveredSocial('twitter')"
+            (mouseleave)="setHoveredSocial(null)">
+            x
+          </button>
+
+          <button
+            type="button"
+            [style.color]="getSocialColor('linkedin')"
+            (mouseenter)="setHoveredSocial('linkedin')"
+            (mouseleave)="setHoveredSocial(null)">
+            in
+          </button>
+
+          <button
+            type="button"
+            [style.color]="getSocialColor('google')"
+            (mouseenter)="setHoveredSocial('google')"
+            (mouseleave)="setHoveredSocial(null)">
+            g
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="detailWrapper emptyDetail">
+    <p>Select a contact to view details</p>
+  </div>
+}
