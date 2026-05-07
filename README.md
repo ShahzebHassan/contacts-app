@@ -311,6 +311,31 @@ In a larger-scale production application, additional improvements could include:
 
 ---
 
+## Shared Components & Reusability
+
+Due to the relatively small scope and time constraints of the assessment project, a fully abstracted shared component architecture was intentionally not implemented.
+
+In a larger-scale production application, the UI would typically be further modularized using reusable shared components such as:
+
+- Shared input components
+- Reusable search bars
+- Generic loading states
+- Shared card layouts
+- Reusable table/list components
+- Empty state components
+- Shared modal/dialog components
+- Centralized form controls
+- Shared skeleton loaders
+
+For this assessment, the implementation prioritized:
+
+- Faster delivery
+- Simpler component structure
+- Readability
+- Feature completion within assessment scope
+
+---
+
 ## Error Handling
 
 Error handling was intentionally kept lightweight for assessment simplicity.
