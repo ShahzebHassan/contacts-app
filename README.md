@@ -90,7 +90,7 @@ ng version
 Clone the project from GitHub:
 
 ```bash
-git clone <your-github-repository-url>
+git clone <https://github.com/ShahzebHassan/contacts-app.git>
 ```
 
 Move into the project directory:
