@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { Contact } from '../../../core/models/contact.model';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-contact-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './contact-detail.html',
   styleUrl: './contact-detail.scss'
 })

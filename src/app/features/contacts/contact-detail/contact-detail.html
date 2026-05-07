@@ -1,7 +1,12 @@
 @if (contact) {
   <div class="detailWrapper">
-    <button class="mobileBackButton" type="button" (click)="back.emit()" aria-label="Back to contacts">
-      ←
+    <button
+    class="mobileBackButton"
+    type="button"
+    (click)="back.emit()"
+    aria-label="Toggle contact list">
+
+    <mat-icon>menu</mat-icon>
     </button>
 
     <div class="detailContent">
@@ -18,20 +23,20 @@
 
           <div class="profileActions">
             <button class="messageButton" type="button">
-              <span>✉</span>
+              <mat-icon>mail</mat-icon>
               <span>Message</span>
             </button>
 
             <button class="iconButton" type="button" aria-label="Call contact">
-              ☎
+              <mat-icon>call</mat-icon>
             </button>
 
             <button class="iconButton" type="button" aria-label="Start video meeting">
-              ▣
+              <mat-icon>videocam</mat-icon>
             </button>
 
             <button class="iconButton" type="button" aria-label="More options">
-              ⋯
+              <mat-icon>more_horiz</mat-icon>
             </button>
           </div>
         </div>
@@ -105,40 +110,50 @@
             type="button"
             [style.color]="getSocialColor('facebook')"
             (mouseenter)="setHoveredSocial('facebook')"
-            (mouseleave)="setHoveredSocial(null)">
-            f
+            (mouseleave)="setHoveredSocial(null)"
+            aria-label="Facebook">
+
+            <mat-icon>facebook</mat-icon>
           </button>
 
           <button
             type="button"
             [style.color]="getSocialColor('pinterest')"
             (mouseenter)="setHoveredSocial('pinterest')"
-            (mouseleave)="setHoveredSocial(null)">
-            p
+            (mouseleave)="setHoveredSocial(null)"
+            aria-label="Pinterest">
+
+            <mat-icon>push_pin</mat-icon>
           </button>
 
           <button
             type="button"
             [style.color]="getSocialColor('twitter')"
             (mouseenter)="setHoveredSocial('twitter')"
-            (mouseleave)="setHoveredSocial(null)">
-            x
+            (mouseleave)="setHoveredSocial(null)"
+            aria-label="Twitter">
+
+            <mat-icon>alternate_email</mat-icon>
           </button>
 
           <button
             type="button"
             [style.color]="getSocialColor('linkedin')"
             (mouseenter)="setHoveredSocial('linkedin')"
-            (mouseleave)="setHoveredSocial(null)">
-            in
+            (mouseleave)="setHoveredSocial(null)"
+            aria-label="LinkedIn">
+
+            <mat-icon>business_center</mat-icon>
           </button>
 
           <button
             type="button"
             [style.color]="getSocialColor('google')"
             (mouseenter)="setHoveredSocial('google')"
-            (mouseleave)="setHoveredSocial(null)">
-            g
+            (mouseleave)="setHoveredSocial(null)"
+            aria-label="Google">
+
+            <mat-icon>public</mat-icon>
           </button>
         </div>
       </div>

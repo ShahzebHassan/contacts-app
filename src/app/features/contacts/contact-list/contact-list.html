@@ -1,8 +1,13 @@
 <div class="contactListWrapper" [class.collapsed]="isCollapsed">
   <div class="header">
     <div class="headerLeft">
-      <button class="menuButton" type="button" (click)="toggleCollapse()" aria-label="Toggle contact list">
-        ☰
+      <button
+        class="menuButton"
+        type="button"
+        (click)="toggleCollapse()"
+        aria-label="Toggle contact list">
+
+        <mat-icon>menu</mat-icon>
       </button>
 
       <h1 class="title">Contacts</h1>
@@ -10,12 +15,22 @@
 
     @if (totalPages() > 1) {
       <div class="navButtons">
-        <button type="button" (click)="prevPage()" [disabled]="currentPage() === 0" aria-label="Previous page">
-          ‹
+        <button
+          type="button"
+          (click)="prevPage()"
+          [disabled]="currentPage() === 0"
+          aria-label="Previous page">
+
+          <mat-icon>chevron_left</mat-icon>
         </button>
 
-        <button type="button" (click)="nextPage()" [disabled]="currentPage() === totalPages() - 1" aria-label="Next page">
-          ›
+        <button
+          type="button"
+          (click)="nextPage()"
+          [disabled]="currentPage() === totalPages() - 1"
+          aria-label="Next page">
+
+          <mat-icon>chevron_right</mat-icon>
         </button>
       </div>
     }
@@ -32,13 +47,17 @@
         (input)="onSearchChange($any($event.target).value)"
       />
 
-      <span class="searchIcon">⌕</span>
+      <mat-icon class="searchIcon">
+        search
+      </mat-icon>
     </div>
   </div>
 
   <div class="contactsScroll">
     @if (paginatedContacts().length === 0) {
-      <div class="noResults">No contacts found</div>
+      <div class="noResults">
+        No contacts found
+      </div>
     } @else {
       @for (contact of paginatedContacts(); track contact.id) {
         <div
@@ -59,21 +78,38 @@
           </div>
 
           <div class="contactInfo">
-            <div class="contactName">{{ contact.name }}</div>
-            <div class="contactRole">{{ contact.role }}</div>
+            <div class="contactName">
+              {{ contact.name }}
+            </div>
+
+            <div class="contactRole">
+              {{ contact.role }}
+            </div>
           </div>
 
           <div class="actionButtons">
-            <button type="button" [class.active]="selectedContactId === contact.id" aria-label="Message contact">
-              ✉
+            <button
+              type="button"
+              [class.active]="selectedContactId === contact.id"
+              aria-label="Message contact">
+
+              <mat-icon>mail</mat-icon>
             </button>
 
-            <button type="button" [class.active]="selectedContactId === contact.id" aria-label="Call contact">
-              ☎
+            <button
+              type="button"
+              [class.active]="selectedContactId === contact.id"
+              aria-label="Call contact">
+
+              <mat-icon>call</mat-icon>
             </button>
 
-            <button type="button" [class.active]="selectedContactId === contact.id" aria-label="More actions">
-              ⋯
+            <button
+              type="button"
+              [class.active]="selectedContactId === contact.id"
+              aria-label="More actions">
+
+              <mat-icon>more_horiz</mat-icon>
             </button>
           </div>
         </div>

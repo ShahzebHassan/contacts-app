@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, EventEmitter, Input, Output, signal } from '@angular/core';
 import { Contact } from '../../../core/models/contact.model';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-contact-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './contact-list.html',
   styleUrl: './contact-list.scss'
 })
@@ -17,7 +18,7 @@ export class ContactList {
   @Output() selectedContactChange = new EventEmitter<string>();
   @Output() collapsedChange = new EventEmitter<boolean>();
 
-  readonly itemsPerPage = 7;
+  readonly itemsPerPage = 10;
 
   currentPage = signal(0);
   searchQuery = signal('');
